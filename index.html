@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://hv-camera-web-sg.s3.ap-southeast-1.amazonaws.com/hyperverge-web-sdk@5.1.6/src/sdk.min.js"></script>
+  </head>
+
+  <body>
+    <div>
+      <button type="button" onclick="starOnboarding();">
+        Start Onboarding
+      </button>
+    </div>
+  </body>
+  <script>
+    function starOnboarding() {
+      const accessToken =
+        "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjE4Yjg2OCIsImhhc2giOiJhOWUyYmQwYjZiMTk2MWQzNTY0OGNiNTUwYzJkNDk2MTVmNzg1Yjk1ODQyMjU0Mzc5YjM2N2M5ZDA5ZDg1NzIzIiwiaWF0IjoxNjY0NDc0OTE3LCJleHAiOjE2NjQ1MDQ5MTcsImp0aSI6IjQxMmE4NzYwLTRkMmItNDRmZS1hYjU3LTMwZGQ4ZGEyNjM0MSJ9.UrWVW_5asMbyNLEAHMqasDmGyYWuvfGPHZVUOJOGZRU1PBGTx3f-YwC3va42OGW_F02OZzZQJ8A6UE990VuL1Dge0hLM3KtbQpiY2Yg2xM--Clr6yWnXg_YoSrizrzAelNbav9cTj8MSXz5bR-gpnkWKgi6k3ZIp3hXGGx0-X6c";
+      const hyperKycConfig = new HyperKycConfig(
+        accessToken,
+        "workflow_fE1ymfh",
+        "abhiTesting"
+      );
+      console.log(hyperKycConfig);
+
+      //            hyperKycConfig.setInputs(
+      //               {
+      //                  "bvnNumber":"22166549995"
+      //               }
+      //         );
+
+      HyperKYCModule.launch(hyperKycConfig, handler);
+    }
+    const handler = (HyperKycResult) => {
+      console.log(HyperKycResult);
+      //HyperKycResult.Status - for all statuses going forward from 5.2.0
+      //         if (HyperKycResult.Cancelled) {
+      //           // user cancelled
+      //            console.log(HyperKycResult.Cancelled);
+      //         } else if (HyperKycResult.Failure) {
+      //           // failure
+      //             console.log(HyperKycResult.Failure);
+      //         } else if (HyperKycResult.Success) {
+      //           // success
+      //             console.log(HyperKycResult.Success);
+      //         }
+    };
+  </script>
+</html>
